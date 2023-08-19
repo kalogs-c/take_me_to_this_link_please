@@ -1,0 +1,21 @@
+<div id="link" class="mt-2">
+  Link generated
+  <button
+    hx-get="/notify"
+    id="button"
+    href="/this-one/{{ .Slug }}"
+    class="link"
+    hx-target="#notification"
+  >
+    click here to copy it
+  </button>
+</div>
+<div id="notification"></div>
+
+<script>
+  const button = document.getElementById("button");
+
+  button.addEventListener("click", () => {
+    navigator.clipboard.writeText("{{ .BaseURL }}/this-one/{{ .Slug }}");
+  });
+</script>
